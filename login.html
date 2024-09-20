@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - App Store</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      flex-direction: column;
+    }
+    .login-container {
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      width: 300px;
+      text-align: center;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    .login-btn {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      width: 100%;
+      padding: 10px;
+      cursor: pointer;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+    .login-btn:hover {
+      background-color: #45a049;
+    }
+    .error {
+      color: red;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+    video {
+      display: none;
+      margin-top: 20px;
+      max-width: 400px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <h2>Login</h2>
+    <input type="email" id="email" placeholder="Email" required>
+    <input type="password" id="password" placeholder="Password" required>
+    <button class="login-btn" onclick="login()">Login</button>
+    <p id="error-message" class="error"></p>
+  </div>
+
+  <!-- Video section for failed login -->
+  <video id="error-video" controls>
+    <source src="error-video.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <!-- JavaScript code at the bottom of the body -->
+  <script>
+    function login() {
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const errorMessage = document.getElementById('error-message');
+      const errorVideo = document.getElementById('error-video');
+
+      // Predefined correct email and password for validation
+      const correctEmail = 'arslaan4712';
+      const correctPassword = 'shiva';
+
+      // Validate both email and password
+      if (email === correctEmail && password === correctPassword) {
+        window.location.href = 'index.html';  // Redirect to the main store page if login is successful
+      } else {
+        errorMessage.textContent = 'Invalid email or password';
+
+        // Show and play the error video if the login fails
+        errorVideo.style.display = 'block';  // Make the video visible
+        errorVideo.play();                   // Play the video
+      }
+    }
+  </script>
+</body>
+</html>
